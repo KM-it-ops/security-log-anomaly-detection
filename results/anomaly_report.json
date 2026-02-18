@@ -1,0 +1,176 @@
+{
+  "log_period": {
+    "start": "2026-02-01T01:39:36",
+    "end": "2026-02-07T21:42:55"
+  },
+  "total_events": 794,
+  "total_alerts": 10,
+  "severity_breakdown": {
+    "HIGH": 2,
+    "CRITICAL": 2,
+    "MEDIUM": 6
+  },
+  "rule_breakdown": {
+    "BRUTE_FORCE": 1,
+    "PORT_SCAN": 1,
+    "OFFHOURS_SENSITIVE_ACCESS": 1,
+    "UNKNOWN_IP": 2,
+    "PRIVILEGE_ESCALATION": 1,
+    "EVENT_VOLUME_SPIKE": 4
+  },
+  "alerts": [
+    {
+      "rule": "BRUTE_FORCE",
+      "severity": "HIGH",
+      "timestamp": "2026-02-03T02:15:23",
+      "source_ip": "185.220.101.42",
+      "details": "50 failed auth attempts in 10 min from 185.220.101.42",
+      "targeted_users": [
+        "mkurdi",
+        "root",
+        "agarcia",
+        "bwilson",
+        "admin",
+        "tchang",
+        "test",
+        "jsmith"
+      ]
+    },
+    {
+      "rule": "PORT_SCAN",
+      "severity": "HIGH",
+      "timestamp": "2026-02-05T03:42:00",
+      "source_ip": "45.33.32.156",
+      "details": "40 unique ports scanned in 5 min from 45.33.32.156",
+      "ports_scanned": [
+        "port:1017",
+        "port:1024",
+        "port:114",
+        "port:131",
+        "port:158",
+        "port:211",
+        "port:237",
+        "port:242",
+        "port:26",
+        "port:260",
+        "port:308",
+        "port:323",
+        "port:342",
+        "port:367",
+        "port:460",
+        "port:468",
+        "port:501",
+        "port:509",
+        "port:523",
+        "port:531",
+        "port:539",
+        "port:551",
+        "port:558",
+        "port:6",
+        "port:61",
+        "port:660",
+        "port:687",
+        "port:73",
+        "port:738",
+        "port:746",
+        "port:754",
+        "port:762",
+        "port:785",
+        "port:853",
+        "port:859",
+        "port:880",
+        "port:91",
+        "port:933",
+        "port:95",
+        "port:967"
+      ]
+    },
+    {
+      "rule": "OFFHOURS_SENSITIVE_ACCESS",
+      "severity": "CRITICAL",
+      "timestamp": "2026-02-04T01:33:12",
+      "source_ip": "10.0.1.50",
+      "details": "User mkurdi accessed /etc/shadow at 01:33 (outside business hours)",
+      "user": "mkurdi",
+      "file": "/etc/shadow"
+    },
+    {
+      "rule": "UNKNOWN_IP",
+      "severity": "MEDIUM",
+      "timestamp": "2026-02-03T02:15:23",
+      "source_ip": "185.220.101.42",
+      "details": "Unknown IP 185.220.101.42 generated 50 events",
+      "event_count": 50
+    },
+    {
+      "rule": "UNKNOWN_IP",
+      "severity": "MEDIUM",
+      "timestamp": "2026-02-05T03:42:00",
+      "source_ip": "45.33.32.156",
+      "details": "Unknown IP 45.33.32.156 generated 40 events",
+      "event_count": 40
+    },
+    {
+      "rule": "PRIVILEGE_ESCALATION",
+      "severity": "CRITICAL",
+      "timestamp": "2026-02-06T23:47:08",
+      "source_ip": "10.0.1.51",
+      "details": "User jsmith ran: chmod 777 /tmp/exploit",
+      "user": "jsmith",
+      "command": "chmod 777 /tmp/exploit"
+    },
+    {
+      "rule": "EVENT_VOLUME_SPIKE",
+      "severity": "MEDIUM",
+      "timestamp": "2026-02-02T14:00:00",
+      "source_ip": "-",
+      "details": "Event volume spike: 17 events (z-score: 3.08, threshold: 2.5)",
+      "event_count": 17,
+      "z_score": 3.08
+    },
+    {
+      "rule": "EVENT_VOLUME_SPIKE",
+      "severity": "MEDIUM",
+      "timestamp": "2026-02-03T02:00:00",
+      "source_ip": "-",
+      "details": "Event volume spike: 51 events (z-score: 12.03, threshold: 2.5)",
+      "event_count": 51,
+      "z_score": 12.03
+    },
+    {
+      "rule": "EVENT_VOLUME_SPIKE",
+      "severity": "MEDIUM",
+      "timestamp": "2026-02-05T03:00:00",
+      "source_ip": "-",
+      "details": "Event volume spike: 41 events (z-score: 9.40, threshold: 2.5)",
+      "event_count": 41,
+      "z_score": 9.4
+    },
+    {
+      "rule": "EVENT_VOLUME_SPIKE",
+      "severity": "MEDIUM",
+      "timestamp": "2026-02-05T13:00:00",
+      "source_ip": "-",
+      "details": "Event volume spike: 17 events (z-score: 3.08, threshold: 2.5)",
+      "event_count": 17,
+      "z_score": 3.08
+    }
+  ],
+  "baseline": {
+    "auth_failure_hourly_mean": 1.3529411764705883,
+    "auth_failure_hourly_std": 0.6063390625908325,
+    "unique_ports_hourly_mean": 1.4705882352941178,
+    "unique_ports_hourly_std": 0.7221565596018247,
+    "business_hours_start": 7,
+    "business_hours_end": 19,
+    "sensitive_files": [
+      "/etc/shadow",
+      "/etc/passwd",
+      "/var/log/auth.log",
+      "/root/.ssh/authorized_keys"
+    ],
+    "events_hourly_mean": 5.2781954887218046,
+    "events_hourly_std": 3.8006247163094016
+  },
+  "detection_rate": 100.0
+}
