@@ -11,7 +11,8 @@ Demonstrate the ability to build a security monitoring system that establishes a
 - **Python 3.10+**
 - **pandas** — Log parsing, time-series aggregation, filtering
 - **NumPy** — Statistical calculations (z-scores, thresholds)
-- **collections / datetime** — Event counting, time-window analysis
+- **matplotlib / seaborn** — Professional data visualization
+- **Python standard library** (`collections`, `datetime`, `json`) — Event counting, time-window analysis, reporting
 
 ## Architecture
 
@@ -45,10 +46,13 @@ System Logs (7 days, ~700+ events)
 
 ```bash
 # Install dependencies
-pip install pandas numpy
+pip install -r requirements.txt
 
 # Run the full detection pipeline
 python anomaly_detector.py
+
+# Generate visualizations (run after the detector)
+python visualize_results.py
 ```
 
 This will:
@@ -58,6 +62,7 @@ This will:
 4. Generate a detailed alert report with severity classifications
 5. Calculate detection accuracy against known ground truth
 6. Save all results to `results/anomaly_report.json` and logs to `data/system_logs.csv`
+7. Generate professional visualizations in `screenshots/`
 
 ## Detection Rules
 
@@ -69,6 +74,20 @@ This will:
 | Unknown IP | Activity from IP not in baseline known-IP list | MEDIUM |
 | Privilege Escalation | sudo usage, especially with dangerous commands | CRITICAL |
 | Event Volume Spike | Hourly event count exceeds z-score threshold of 2.5 | MEDIUM |
+
+## Visualizations
+
+### Alerts by Severity Level
+![Alerts by Severity](screenshots/alerts_by_severity.png)
+
+### Alerts by Detection Rule
+![Alerts by Rule](screenshots/alerts_by_rule.png)
+
+### Event Classification
+![Detection Summary](screenshots/detection_summary.png)
+
+### Detection Rate
+![Detection Rate](screenshots/detection_rate.png)
 
 ## What "Normal" Looks Like (Baseline)
 
@@ -116,4 +135,4 @@ Anything that deviates significantly from these patterns triggers an alert.
 
 ## Author
 
-Michael Kurdi — [LinkedIn](https://www.linkedin.com/in/michael-kurdi) | CompTIA Security+ | B.S. Information Technology (Cybersecurity), SNHU
+Michael Kurdi — [LinkedIn](https://www.linkedin.com/in/michael-kurdi) | [GitHub](https://github.com/KM-it-ops) | CompTIA Security+ | B.S. Information Technology (Cybersecurity), SNHU
