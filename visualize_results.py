@@ -4,7 +4,7 @@ Security Log Anomaly Detection — Visualization Suite
 Generates professional charts for the anomaly detection project.
 Run this AFTER running anomaly_detector.py (which creates results/anomaly_report.json).
 
-Author: Michael Kurdi
+Author: Mahmoud Al Kurdi
 Tools: matplotlib, seaborn, json
 """
 

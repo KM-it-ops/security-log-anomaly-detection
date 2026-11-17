@@ -5,7 +5,7 @@ A rule-based and statistical anomaly detection system that analyzes
 system/network logs to flag unusual behavior such as failed login
 spikes, port scans, and off-hours access.
 
-Author: Michael Kurdi
+Author: Mahmoud Al Kurdi
 Project: Portfolio — Cybersecurity
 Tools: Python, pandas, NumPy, statistics
 """
