@@ -26,7 +26,7 @@
       "source_ip": "185.220.101.42",
       "details": "50 failed auth attempts in 10 min from 185.220.101.42",
       "targeted_users": [
-        "mkurdi",
+        "jdoe",
         "root",
         "agarcia",
         "bwilson",
@@ -90,8 +90,8 @@
       "severity": "CRITICAL",
       "timestamp": "2026-02-04T01:33:12",
       "source_ip": "10.0.1.50",
-      "details": "User mkurdi accessed /etc/shadow at 01:33 (outside business hours)",
-      "user": "mkurdi",
+      "details": "User jdoe accessed /etc/shadow at 01:33 (outside business hours)",
+      "user": "jdoe",
       "file": "/etc/shadow"
     },
     {
