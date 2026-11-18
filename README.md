@@ -11,7 +11,7 @@ Demonstrate the ability to build a security monitoring system that establishes a
 - **Python 3.10+**
 - **pandas** — Log parsing, time-series aggregation, filtering
 - **NumPy** — Statistical calculations (z-scores, thresholds)
-- **matplotlib / seaborn** — Professional data visualization
+- **matplotlib / seaborn** — Charts
 - **Python standard library** (`collections`, `datetime`, `json`) — Event counting, time-window analysis, reporting
 
 ## Architecture
@@ -66,14 +66,14 @@ This will:
 
 ## Detection Rules
 
-| Rule | Trigger | Severity |
-|------|---------|----------|
-| Brute Force | >10 auth failures from same IP in 10 minutes | HIGH |
-| Port Scan | >15 unique ports from same IP in 5 minutes | HIGH |
-| Off-Hours Sensitive Access | Sensitive file (/etc/shadow, etc.) accessed outside 7 AM–7 PM | CRITICAL |
-| Unknown IP | Activity from IP not in baseline known-IP list | MEDIUM |
-| Privilege Escalation | sudo usage, especially with dangerous commands | CRITICAL |
-| Event Volume Spike | Hourly event count exceeds z-score threshold of 2.5 | MEDIUM |
+| Rule | Trigger | Severity | MITRE ATT&CK (closest technique) |
+|------|---------|----------|------------------|
+| Brute Force | >10 auth failures from same IP in 10 minutes | HIGH | T1110 Brute Force |
+| Port Scan | >15 unique ports from same IP in 5 minutes | HIGH | T1046 Network Service Discovery |
+| Off-Hours Sensitive Access | Sensitive file (/etc/shadow, etc.) accessed outside 7 AM–7 PM | CRITICAL | T1003.008 /etc/passwd and /etc/shadow |
+| Unknown IP | Activity from IP not in baseline known-IP list | MEDIUM | none (context signal) |
+| Privilege Escalation | sudo usage, especially with dangerous commands | CRITICAL | T1548.003 Sudo and Sudo Caching |
+| Event Volume Spike | Hourly event count exceeds z-score threshold of 2.5 | MEDIUM | none (statistical) |
 
 ## Visualizations
 
@@ -129,10 +129,10 @@ Anything that deviates significantly from these patterns triggers an alert.
 ## Lessons Learned
 
 1. **Baselines are foundational**: You cannot detect anomalies without first defining what "normal" looks like. This mirrors real SOC operations where baseline profiling is a critical first step.
-2. **Rule-based detection is powerful for known threats**: Simple threshold rules caught 90%+ of injected anomalies. For known attack patterns (brute force, port scans), rules are fast, explainable, and reliable.
+2. **Rule-based detection is powerful for known threats**: On the committed synthetic dataset (794 events over 7 days), the rules raised 10 alerts and caught every planted attack scenario (`detection_rate: 100.0` in `results/anomaly_report.json`). That is synthetic data with known answers, not a production false-positive rate. For known attack patterns (brute force, port scans), rules are fast, explainable, and reliable.
 3. **Time-window analysis matters**: The same event can be normal in isolation but anomalous in context. 3 failed logins per hour is normal; 50 in 10 minutes from one IP is an attack.
 4. **Severity classification drives response**: Not all anomalies require the same urgency. Structuring alerts by severity helps SOC analysts prioritize their response.
 
 ## Author
 
-Mahmoud Al Kurdi — [LinkedIn](https://www.linkedin.com/in/mahmoud-al-kurdi-it/) | [GitHub](https://github.com/KM-it-ops) | CompTIA Security+ | B.S. Information Technology (Cybersecurity), SNHU
+Mahmoud Al Kurdi — [LinkedIn](https://www.linkedin.com/in/mahmoud-al-kurdi-it/) | [GitHub](https://github.com/KM-it-ops) | CompTIA Security+ | B.S. Information Technologies (Cybersecurity), SNHU | [Portfolio](https://km-it-ops.github.io/)
