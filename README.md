@@ -105,7 +105,7 @@ Anything that deviates significantly from these patterns triggers an alert.
 
 **Brute Force Attack (Day 3, 2:15 AM)**
 - 50 failed authentication attempts from 185.220.101.42 in 5 minutes
-- Targeted users: admin, root, test, mkurdi, jsmith
+- Targeted users: admin, root, test, jdoe, jsmith
 - Severity: HIGH
 
 **Port Scan (Day 5, 3:42 AM)**
@@ -114,7 +114,7 @@ Anything that deviates significantly from these patterns triggers an alert.
 - Severity: HIGH
 
 **Off-Hours Sensitive File Access (Day 4, 1:33 AM)**
-- User mkurdi accessed /etc/shadow at 1:33 AM
+- User jdoe accessed /etc/shadow at 1:33 AM
 - Could indicate compromised credentials or insider threat
 - Severity: CRITICAL
 

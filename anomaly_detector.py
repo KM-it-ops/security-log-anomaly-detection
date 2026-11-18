@@ -40,7 +40,7 @@ LOG_TYPES = {
     "firewall_block": "Firewall blocked connection from {ip} to port {port}",
 }
 
-NORMAL_USERS = ["mkurdi", "jsmith", "agarcia", "tchang", "bwilson"]
+NORMAL_USERS = ["jdoe", "jsmith", "agarcia", "tchang", "bwilson"]
 NORMAL_IPS = ["10.0.1.50", "10.0.1.51", "10.0.1.52", "10.0.1.53", "10.0.1.54"]
 ATTACKER_IPS = ["185.220.101.42", "103.75.201.18", "45.33.32.156"]
 SENSITIVE_FILES = ["/etc/shadow", "/etc/passwd", "/var/log/auth.log", "/root/.ssh/authorized_keys"]
@@ -145,7 +145,7 @@ def generate_logs(n_days: int = 7, seed: int = 42) -> pd.DataFrame:
             logs.append({
                 "timestamp": timestamp.isoformat(),
                 "event_type": "file_access",
-                "user": "mkurdi",
+                "user": "jdoe",
                 "source_ip": "10.0.1.50",
                 "target": "/etc/shadow",
                 "severity": "CRITICAL",
