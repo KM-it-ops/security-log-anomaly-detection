@@ -17,7 +17,7 @@ Demonstrate the ability to build a security monitoring system that establishes a
 ## Architecture
 
 ```
-System Logs (7 days, ~700+ events)
+System Logs (7 days; 794 events in the committed run)
     │
     ├──► Baseline Profiler
     │       • Auth failure rate (mean/std per hour)
@@ -56,7 +56,7 @@ python visualize_results.py
 ```
 
 This will:
-1. Generate 7 days of synthetic system logs (~700+ events with injected anomalies)
+1. Generate 7 days of synthetic system logs (794 events with injected anomalies in the committed run)
 2. Build a baseline profile from clean (non-anomalous) activity
 3. Run 6 detection rules against the full log dataset
 4. Generate a detailed alert report with severity classifications
